@@ -14,14 +14,14 @@ supabase=create_client(os.getenv("SUPABASE_URL"),os.getenv("SUPABASE_SERVICE_KEY
 
 # add expense 
 @mcp.tool()
-def add_expense(amount:float,category:str,description:str="")->dict:
+async def add_expense(amount:float,category:str,description:str="")->dict:
     """Add new expense record"""
     
-    response=supabase.table("expenses").insert({"amount":amount,"category":category,"description":description}).execute()
+    response=await supabase.table("expenses").insert({"amount":amount,"category":category,"description":description}).execute()
     
     return response.data[0]
 
 
 
 if __name__=="__main__":
-    mcp.run()
+    mcp.run(transport="http",host="0.0.0.0",port=8081)

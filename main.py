@@ -11,4 +11,4 @@ def roll_dice(n_dice:int=1):
 
 
 if __name__=="__main__":
-    mcp.run()
+    mcp.run(transport="http",host="0.0.0.0",port=8081)
