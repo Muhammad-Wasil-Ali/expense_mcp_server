@@ -32,7 +32,4 @@ async def add_expense(amount: float, category: str, description: str = "") -> di
 
     return response.data[0]
 
-app = mcp.http_app(path="/")
-if __name__ == "__main__":
-    asyncio.run(init_supabase())
-    mcp.run(transport="http", host="0.0.0.0", port=8081)
+app = mcp.http_app(path="/mcp")
